@@ -10,7 +10,7 @@ use GuzzleHttp\Client;
  * Class SimpleCurrencyProvider
  * @package ComposerIncludeFiles
  */
-class SimpleCurrencyProvider extends BaseCurrency
+class SimpleCurrencyProvider extends BaseCurrency implements Currency
 {
     private $client;
     private $response;

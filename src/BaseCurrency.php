@@ -7,7 +7,7 @@ namespace ComposerIncludeFiles;
  * Class BaseCurrency
  * @package ComposerIncludeFiles
  */
-abstract class BaseCurrency implements Currency
+abstract class BaseCurrency
 {
     protected $baseCurrency = '';
     protected $currencyRates = array();
