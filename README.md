@@ -1,2 +1,1 @@
-# untitled
-a demo work
+# An Example of PHP script

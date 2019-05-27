@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Currency Rates</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/checkout/">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Currency Rates</h2>
+            <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form id="rates">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="provider">Region</label>
+                            <select class="custom-select d-block w-100" id="provider" required="">
+                                <option value="" disabled>Choose...</option>
+                                <option value="us">United States</option>
+                                <option value="eu">Europe</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="currency">Currency</label>
+                            <select class="custom-select d-block w-100" id="currency" required=""></select>
+                        </div>
+
+                        <div class="col-md-2 mb-2">
+                            <label for="amount">Amount</label>
+                            <input type="text" class="form-control" id="amount" placeholder="" value="" required="">
+                        </div>
+
+                        <div class="col-md-2 mb-2">
+                            <label for="sum">Sum</label>
+                            <input type="text" class="form-control" id="sum" placeholder="" value="" required="" disabled>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <button class="btn btn-primary btn-lg btn-block" type="button" id="convert">Convert</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+       ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+    <script>
+      $( document ).ready(function() {
+        //console.log( "ready!" );
+
+        function calculate(){
+          $('#sum').val(Number.parseFloat($('#amount').val() * $('#currency').val()).toFixed(2));
+        };
+
+        $('#amount, #currency, #convert').change(calculate);
+
+        $('#provider').change(function() {
+          var data = "";
+          $.ajax({
+            type: "GET",
+            url: "/index.php",
+            data: "rate_provider=" + $(this).val(),
+            async: false,
+            success: function (response) {
+              data = response;
+              var select = $('#currency');
+              select.empty();
+              $('<option></option>').val("").html('Choose...');
+              $.each(data.rates, function(index, value) {
+                select.append(
+                  $('<option></option>').val(value).html(index)
+                );
+              });
+              return response;
+            },
+            error: function () {
+              alert('Error occured');
+            }
+          });
+        });
+      });
+    </script>
+</body>
+</html>
+
+
+

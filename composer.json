@@ -1,0 +1,32 @@
+{
+    "name": "0.0.0/composer-include-files",
+    "type": "composer-plugin",
+    "description": "Include files at a higher priority than autoload files.",
+    "keywords": ["composer", "autoload"],
+    "homepage": "https://github.com/funkjedi/composer-include-files",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex S",
+            "email": "x.555.alex.s@gmail.com"
+        }
+    ],
+    "require": {
+        "composer-plugin-api": "^1.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/http-foundation": "^4.2",
+        "twig/twig": "^2.10",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ComposerIncludeFiles\\": "src"
+        }
+    },
+    "extra": {
+        "class": "ComposerIncludeFiles\\Plugin"
+    },
+    "require-dev": {
+        "symfony/dotenv": "^4.2"
+    }
+}
