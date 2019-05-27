@@ -16,8 +16,10 @@ $twig = new Environment($loader, [
     'cache' => __DIR__ . '/../var',
 ]);
 
+/*
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/../.env');
+*/
 
 $rateProvider = $request->query->get('rate_provider');
 if ($rateProvider) {
