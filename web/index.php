@@ -4,7 +4,6 @@ require __DIR__ . '/../vendor/autoload.php';
 
 
 use ComposerIncludeFiles\SimpleCurrencyProvider;
-use ComposerIncludeFiles\ForeignExchangeRates;
 use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -12,7 +11,7 @@ use Symfony\Component\Dotenv\Dotenv;
 
 $request = Request::createFromGlobals();
 
-$loader = new FilesystemLoader(__DIR__ . '/../templates');
+$loader = new FilesystemLoader(__DIR__ . '/templates');
 $twig = new Environment($loader, [
     'cache' => __DIR__ . '/../var',
 ]);
