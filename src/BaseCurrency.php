@@ -3,7 +3,10 @@
 
 namespace ComposerIncludeFiles;
 
-
+/**
+ * Class BaseCurrency
+ * @package ComposerIncludeFiles
+ */
 abstract class BaseCurrency implements Currency
 {
     protected $baseCurrency = '';

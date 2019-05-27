@@ -6,6 +6,10 @@ namespace ComposerIncludeFiles;
 
 use GuzzleHttp\Client;
 
+/**
+ * Class SimpleCurrencyProvider
+ * @package ComposerIncludeFiles
+ */
 class SimpleCurrencyProvider extends BaseCurrency
 {
     private $client;
@@ -13,7 +17,7 @@ class SimpleCurrencyProvider extends BaseCurrency
     private $uri;
 
     /**
-     * EuropeanCentralBank constructor.
+     * SimpleCurrencyProvider constructor.
      * @param $uri
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -26,6 +30,9 @@ class SimpleCurrencyProvider extends BaseCurrency
         //var_dump($this->response);
     }
 
+    /**
+     * @inheritDoc
+     */
     public function setCurrencyFromProvider() : void
     {
         $this->baseCurrency = $this->response->base;
@@ -33,8 +40,7 @@ class SimpleCurrencyProvider extends BaseCurrency
     }
 
     /**
-     * @return array
-     * @throws \Exception
+     * @inheritDoc
      */
     public function getCurrency() : array
     {
